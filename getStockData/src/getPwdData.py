@@ -25,6 +25,12 @@ def getPwd(name):
             'logInPwd':'Wef1991926',
             'tradePwd':'324872',
         },
+        'zhangLe':{
+            'account':'682280736',
+            'logInPwd':'Wef1991926',
+            'tradePwd':'Wef1991926',
+        },
+        'phone':'17319075327'
         
     }
     result = initData[(name)]

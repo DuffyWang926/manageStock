@@ -6,8 +6,8 @@ from src.aiDe import buyAiDe, getAiDeProperty
 from src.fuYuan import buyFuYuan, getfuYuanProperty
 from src.tiger import buyTiger, getTigerProperty
 from src.dongCai import buyDongCai, getDongCaiProperty
-from src.yingLi import buyYingLi
-from src.zhangLe import buyZhangLe
+from src.yingLi import buyYingLi, getYingLiProperty
+from src.zhangLe import buyZhangLe, getZhangeLeProperty
 from src.jiaTou import buyJiaTou
 from src.dongFang import buyDongFang
 from src.yaoCai import buyYaoCai
@@ -88,7 +88,11 @@ def getProperty():
     # getAiDeProperty(param)
     # getfuYuanProperty(param)
     # getTigerProperty(param)
-    getDongCaiProperty(param)
+    # getDongCaiProperty(param)
+    # getYingLiProperty(param)
+    getZhangeLeProperty(param)
+    
+    
     
     
     

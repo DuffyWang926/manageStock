@@ -28,7 +28,7 @@ def insertData(db, cursor, param):
     date = time.strftime("%Y-%m-%d", time.localtime())
     insert_sql = "insert into `%s` (`allNum`, `availableNum`, `date`)values('%s','%s','%s')" % (tableName,allNum, availableNum, date)
     try:
-        select_sql = "select `allNum` from `zunJia0` where `allNum`='%s'" % allNum
+        select_sql = "select `allNum` from `%s` where `allNum`='%s'" % (tableName, allNum)
         response = cursor.execute(select_sql)
         db.commit()
         if response == 1:

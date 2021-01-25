@@ -34,10 +34,7 @@ def buyZhangLe(param):
     sleep(3)
     driver.launch_app(); 
     sleep(6)
-    if isExist(driver,'com.lphtsccft.zlqqt2:id/pending_open'):
-       driver.find_element_by_id('com.lphtsccft.zlqqt2:id/pending_open').click()
-       sleep(1)
-
+    loginZhangeLe(driver)
     driver.find_element_by_id('com.lphtsccft.zlqqt2:id/main_account').click()
     sleep(1)
     path = '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ImageView[2]'
@@ -71,3 +68,42 @@ def buyZhangLe(param):
     # driver.find_element_by_android_uiautomator(numPath).click()
     # sleep(1)
     driver.quit()
+    
+
+def getZhangeLeProperty(param):
+   settingIndex = param['setIndex']
+   settingData = getSetting(settingIndex)
+   settingData['appPackage'] = 'com.lphtsccft.zlqqt2'
+   settingData['appActivity'] = 'com.lphtsccft.zhangle.startup.SplashScreenActivity'
+   desired_caps = settingData
+   driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+   driver.close_app();            
+   sleep(3)
+   driver.launch_app(); 
+   sleep(6)
+   loginZhangeLe(driver)
+   driver.find_element_by_id('com.lphtsccft.zlqqt2:id/main_account').click()
+   sleep(2)
+   propertyPath = '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.ScrollView/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[5]'
+   driver.find_element_by_xpath(propertyPath).click()
+   sleep(1)
+   pwd = getPwd('zhangLe')['tradePwd']
+   pwdId = 'com.lphtsccft.zlqqt2:id/login_et_password'
+   driver.find_element_by_id(pwdId).send_keys(pwd)
+   driver.find_element_by_id('com.lphtsccft.zlqqt2:id/login_btn_login_account').click()
+   sleep(10)
+   print(driver.page_source)
+   print(driver.contexts)
+
+   
+    
+
+def loginZhangeLe(driver):
+   closePath = '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ImageView'
+   if isExist(driver, 2,closePath):
+      driver.find_element_by_xpath(closePath).click()
+      sleep(1)
+   
+   if isExist(driver, 4,'com.lphtsccft.zlqqt2:id/pending_open'):
+       driver.find_element_by_id('com.lphtsccft.zlqqt2:id/pending_open').click()
+       sleep(1)
